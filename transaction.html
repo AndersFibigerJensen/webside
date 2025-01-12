@@ -2,24 +2,15 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <https://www.bootstrapcdn.com/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
     <body>
-    <ul>
-        <li> </li>
-        <li> </li>
-    </ul>
-    
         <div id="app">
-            <div class="col" style="text-align: left;"> 
+            <div class="col" v-model="name" style="text-align: left;"> 
                 <input type="text">
             </div>
-            <div class="col" style="text-align: left;">
-                    <input type="text">
-            </div>
-            <div class="col">
+            <div class="col" v-model:store-id style="text-align: left;">
                     <input type="text">
             </div>
         </div>

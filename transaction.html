@@ -7,12 +7,13 @@
     </head>
     <body>
         <div id="app">
-            <div class="col" v-model="name" style="text-align: left;"> 
+            <div class="col" v-model:productid style="text-align: left;"> 
                 <input type="text">
             </div>
             <div class="col" v-model:store-id style="text-align: left;">
                     <input type="text">
             </div>
+        <button v-on:click="addtransaction"></button>
         </div>
         <script src="transaction.js"></script>
     </body>

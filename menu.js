@@ -1,28 +1,42 @@
-const baseurl="http://localhost:5276/swagger/index.html"
+const baseurl="http://localhost:5276/"
 
-const app= Vue.createApp({
-    data(){
-        return{
-            clusterid:-1,
-            productid:-1,
-            storeid:-1,
-            hour:-1
-        }
+const app = Vue.createApp({
+    data() {
+        return {
+            StoreCluster:0,
+            ProductCluster:0
+        };
     },
     async created()
     {
-        getstorecluster()
-        gethourcluster()
+        this.products=await this.getproducts()
+        this.stores=await this.getstores()
     },
-    methods:
-    {
-        getstorecluster()
+    methods: 
         {
-            axios.get(baseurl)
-        },
-        gethourcluster()
-        {
-            axios.get(baseurl)
+            async getstores()
+            {
+                try
+                {
+                     await axios.get(baseurl + "Api/ProductCluster" + "?category="-1 +"&store_id=" + 1 +"&cluster=" +1)
+                }
+                catch(ex)
+                {
+                    alert(ex.message)
+                }         
+            },      
+            async getproducts()
+            {
+                try
+                {
+                     await axios.get(baseurl + "Api/StoreCluster")
+                }
+                catch(ex)
+                {
+                    alert(ex.message)
+                }  
+            }
         }
-    }
-}).mount("App")
+    });
+
+app.mount('#App');

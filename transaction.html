@@ -1,20 +1,24 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
     <body>
         <div id="app">
-            <div class="col" v-model:productid style="text-align: left;"> 
-                <input type="text">
-            </div>
-            <div class="col" v-model:store-id style="text-align: left;">
-                    <input type="text">
-            </div>
-        <button v-on:click="addtransaction"></button>
+        <select v-model="Stores">
+            <option v-for="store in Stores" :value="Stores">
+                {{store.store_location}}
+            </option>
+        </select>
+        <select v-model="Productid">
+            <option v-for="product in Products" :value="product.product_id" >
+                {{product.product_detail}} 
+            </option>
+        </select>
+        {{Productid}}
+        <button> add</button>
         </div>
-        <script src="transaction.js"></script>
+        <script src="C:\Users\ander\Downloads\Aflevering\webside\transaction.js"></script>
     </body>
 </html>

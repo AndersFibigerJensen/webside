@@ -1,18 +1,20 @@
-const baseurl="http://localhost:5276/swagger/index.html"
+const baseurl="http://localhost:5276/"
 
-const app=Vue.createApp({
-    data() {
-        return {
-            products:[],
-            stores:[],
-            product:{id:null,name:null},
-            store:{id:null,name:null}
+const app= Vue.createApp({
+    data()
+    {
+        return{
+            Stores:[],
+            Products:[],
+            Productid:0,
+            Storeid:0
         };
     },
     async created()
     {
-        this.products=await this.getproducts()
-        this.stores=await this.getstores()
+        this.getstores()
+        this.getproducts()
+        console.log("did it")
     },
     methods:
     {
@@ -20,51 +22,37 @@ const app=Vue.createApp({
         {
             try
             {
-                 await axios.get(baseurl)
+                const response= await axios.get(baseurl + "Api/Store")
+                this.Stores=response.data
             }
             catch(ex)
             {
                 alert(ex.message)
             }         
-        },      
+        },
         async getproducts()
         {
             try
             {
-                 await axios.get(baseurl)
+                const response= await axios.get(baseurl + "Api/Product")
+                this.Products=response.data
             }
             catch(ex)
             {
                 alert(ex.message)
-            }  
+            }         
         },
-        async getstores(storeid)
+        async postTransaction()
         {
             try
             {
-                axios.get(baseurl/storeid)
+                axios.Post(baseurl + "Transaction?storeid="+Storeid+ "&product="+Productid)
+                console.log("working")
             }
             catch(ex)
             {
                 alert(ex.message)
-            }  
-        },
-        async getidproduct(productid)
-        {
-            try
-            {
-                axios.get(baseurl/productid)
             }
-            catch(ex)
-            {
-                alert(ex.message)
-            }  
-        },
-        async addtransaction()
-        {
-            
-            datetime.now()
-            axios.post()
         }
     }
-}).mount("#app")
+}).mount('#app')
